@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+.env
+.env.local
+backend/.env
+
+# Local runtime data
+backend/storage/
+backend/uploads/
+backend/chroma_db/
+storage/
+uploads/
+chroma_db/
+*.db
+*.sqlite3
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Node / React
+node_modules/
+dist/
+build/

@@ -1,0 +1,3 @@
+IT Security Manual
+All users must enable multi-factor authentication. Passwords must be at least 12 characters long.
+Production database access requires admin approval and audit logging.

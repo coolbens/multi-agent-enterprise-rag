@@ -1,0 +1,166 @@
+ACME TECHNOLOGY SOLUTIONS
+EMPLOYEE DATA SECURITY & AI USAGE POLICY
+
+Version: 1.0
+Effective Date: January 1, 2026
+
+------------------------------------------------------------
+1. PURPOSE
+------------------------------------------------------------
+
+The purpose of this policy is to establish rules and procedures
+for handling company data, confidential information, and the
+use of Artificial Intelligence systems within ACME Technology
+Solutions.
+
+This policy applies to all employees, contractors, consultants,
+interns, and third-party vendors who access company systems,
+documents, or AI platforms.
+
+------------------------------------------------------------
+2. CONFIDENTIAL INFORMATION
+------------------------------------------------------------
+
+Employees must protect all confidential information including:
+
+- Customer data
+- Internal financial reports
+- Source code
+- Technical documentation
+- HR records
+- Product roadmaps
+- Legal contracts
+- Company manuals
+- Security credentials
+
+Confidential data must not be:
+
+- Shared externally without authorization
+- Uploaded to unauthorized AI platforms
+- Copied to personal devices
+- Stored in unsecured cloud services
+
+------------------------------------------------------------
+3. ACCEPTABLE AI USAGE
+------------------------------------------------------------
+
+Approved AI systems may be used for:
+
+- Document summarization
+- Internal knowledge retrieval
+- Coding assistance
+- Report generation
+- Customer support automation
+- Enterprise search systems
+
+Employees must verify all AI-generated outputs before use.
+
+AI-generated information must not be treated as guaranteed
+accurate without human review.
+
+------------------------------------------------------------
+4. PROHIBITED AI USAGE
+------------------------------------------------------------
+
+Employees are prohibited from:
+
+- Uploading sensitive customer data to public AI systems
+- Generating malicious code
+- Using AI for harassment or discrimination
+- Bypassing security protocols using AI tools
+- Sharing confidential prompts externally
+
+Violation of these rules may result in disciplinary action,
+including termination.
+
+------------------------------------------------------------
+5. PASSWORD POLICY
+------------------------------------------------------------
+
+All employees must:
+
+- Use strong passwords
+- Enable multi-factor authentication (MFA)
+- Change passwords every 90 days
+- Never share credentials with other users
+
+Minimum password requirements:
+
+- At least 12 characters
+- Uppercase and lowercase letters
+- Numbers
+- Special characters
+
+------------------------------------------------------------
+6. DATA RETENTION POLICY
+------------------------------------------------------------
+
+Company documents must follow retention schedules:
+
+- HR records: 7 years
+- Financial documents: 10 years
+- Security logs: 2 years
+- AI interaction logs: 1 year
+
+Expired records must be securely deleted.
+
+------------------------------------------------------------
+7. REMOTE WORK SECURITY
+------------------------------------------------------------
+
+Remote employees must:
+
+- Use company-approved VPN
+- Lock devices when unattended
+- Avoid public Wi-Fi without VPN
+- Store company devices securely
+
+------------------------------------------------------------
+8. INCIDENT REPORTING
+------------------------------------------------------------
+
+Employees must immediately report:
+
+- Data breaches
+- Lost devices
+- Suspicious login attempts
+- Unauthorized AI usage
+- Malware infections
+
+Reports should be sent to:
+
+security@acmetech.example
+
+------------------------------------------------------------
+9. ACCESS CONTROL
+------------------------------------------------------------
+
+Access to systems and documents is based on:
+
+- Job responsibilities
+- Role permissions
+- Least-privilege principle
+
+Unauthorized access attempts are logged and monitored.
+
+------------------------------------------------------------
+10. COMPLIANCE
+------------------------------------------------------------
+
+Failure to comply with this policy may result in:
+
+- Suspension of system access
+- Disciplinary action
+- Legal consequences
+- Employment termination
+
+------------------------------------------------------------
+11. ACKNOWLEDGMENT
+------------------------------------------------------------
+
+All employees must acknowledge that they have read,
+understood, and agreed to follow this policy.
+
+------------------------------------------------------------
+END OF DOCUMENT
+------------------------------------------------------------
