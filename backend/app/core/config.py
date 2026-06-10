@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     environment: str = "development"
 
     # Change this in backend/.env before production deployment, this is the default setting if .env is not available
-    secret_key: str = "change-this-secret-key"
+    secret_key: str = "asdfsdafasdf12312312"
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 1440
 
@@ -39,14 +39,14 @@ class Settings(BaseSettings):
     huggingface_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
 
     # Vector database configuration.
-    vector_db_provider: str = "chroma"
+    vector_db_provider: str = "qdrant"
     chroma_persist_dir: str = str(CHROMA_DIR)
     chroma_collection: str = "enterprise_docs"
 
     pinecone_api_key: str | None = None
     pinecone_index_name: str | None = None
 
-    qdrant_url: str = "http://localhost:6333"
+    qdrant_url: str | None = None
     qdrant_api_key: str | None = None
     qdrant_collection: str = "enterprise_docs"
 

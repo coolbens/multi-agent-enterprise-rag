@@ -48,12 +48,39 @@ def get_vectorstore():
     if provider == "qdrant":
         from langchain_community.vectorstores import Qdrant
         from qdrant_client import QdrantClient
+        from qdrant_client.models import Distance, VectorParams
+        
+        if not settings.qdrant_url:
+            raise ValueError("QDRANT_URL is required when VECTOR_DB_PROVIDER=qdrant")
 
-        client = QdrantClient(url=settings.qdrant_url, api_key=settings.qdrant_api_key)
-        return Qdrant(client=client, collection_name=settings.qdrant_collection, embeddings=embeddings)
+        if not settings.qdrant_api_key:
+            raise ValueError("QDRANT_API_KEY is required when VECTOR_DB_PROVIDER=qdrant")
 
+        client = QdrantClient(
+            url=settings.qdrant_url,
+            api_key=settings.qdrant_api_key,
+            timeout=60,
+        )
+
+        vector_size = len(embeddings.embed_query("test"))
+
+        try:
+            client.get_collection(settings.qdrant_collection)
+        except Exception:
+            client.create_collection(
+                collection_name=settings.qdrant_collection,
+                vectors_config=VectorParams(
+                    size=vector_size,
+                    distance=Distance.COSINE,
+            ),
+        )
+        return Qdrant(
+            client=client,
+            collection_name=settings.qdrant_collection,
+            embeddings=embeddings,
+        )
+    
     raise ValueError(f"Unsupported VECTOR_DB_PROVIDER: {provider}")
-
 
 def add_chunks(chunks: list[dict], filename: str, document_id: int, owner_id: int) -> int:
     vectorstore = get_vectorstore()
