@@ -7,8 +7,9 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import uuid
-
+from qdrant_client.models import Distance, VectorParams, PayloadSchemaType
 from app.core.config import get_settings
+
 
 
 def get_embeddings():
@@ -49,7 +50,7 @@ def get_vectorstore():
     if provider == "qdrant":
         from langchain_community.vectorstores import Qdrant
         from qdrant_client import QdrantClient
-        from qdrant_client.models import Distance, VectorParams
+        
         
         if not settings.qdrant_url:
             raise ValueError("QDRANT_URL is required when VECTOR_DB_PROVIDER=qdrant")
@@ -77,7 +78,16 @@ def get_vectorstore():
                     size=vector_size,
                     distance=Distance.COSINE,
             ),
-        )
+         )
+
+        try:
+            client.create_payload_index(
+                collection_name=settings.qdrant_collection,
+                field_name="metadata.owner_id",
+                field_schema=PayloadSchemaType.INTEGER,
+            )
+        except Exception:
+            pass
         return Qdrant(
             client=client,
             collection_name=settings.qdrant_collection,
@@ -148,9 +158,19 @@ def delete_document_vectors(document_id: int, chunk_count: int) -> None:
         return
 
     vectorstore = get_vectorstore()
-    ids = [f"doc-{document_id}-chunk-{i}" for i in range(chunk_count)]
+    ids = [
+        str(uuid.uuid5(uuid.NAMESPACE_DNS, f"doc-{document_id}-chunk-{i}"))
+        for i in range(chunk_count)
+    ]
 
     if hasattr(vectorstore, "delete"):
         vectorstore.delete(ids=ids)
         if hasattr(vectorstore, "persist"):
             vectorstore.persist()
+
+def _matches_owner(item: dict[str, Any], owner_id: int | None) -> bool:
+    if owner_id is None:
+        return True
+
+    metadata = item.get("metadata", {})
+    return metadata.get("owner_id") == owner_id
