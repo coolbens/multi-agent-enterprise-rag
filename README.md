@@ -1,8 +1,6 @@
 # Multi-Agent Enterprise RAG System
 
-A portfolio-ready enterprise AI application for uploading company documents and asking source-grounded questions using **React**, **FastAPI**, **LangGraph**, **LangChain**, **OpenAI**, **Hugging Face embeddings**, **ChromaDB**, **SQLite**, and **Docker**.
-
-## Why this is strong for an AI Engineer portfolio
+An AI application for uploading company documents and asking source-grounded questions using **React**, **FastAPI**, **LangGraph**, **LangChain**, **OpenAI**, **Hugging Face embeddings**, **ChromaDB**, **SQLite**, and **Docker**.
 
 This project demonstrates a realistic enterprise GenAI architecture:
 
@@ -258,21 +256,6 @@ The first upload may take longer because `sentence-transformers/all-MiniLM-L6-v2
 - `GET /admin/dashboard`
 - `GET /health`
 
-## Interview Talking Points
-
-Use this explanation in interviews:
-
-> I built a full-stack Multi-Agent Enterprise RAG System. The backend is FastAPI with JWT authentication and SQLAlchemy. Uploaded documents are extracted, chunked, embedded with Hugging Face embeddings, and stored in ChromaDB. When a user asks a question, LangGraph coordinates multiple agents: retrieval, analysis, summarization, hallucination checking, and final answer generation. The answer is produced by OpenAI and includes citations to retrieved document chunks. The React frontend shows document upload, chat, citations, workflow visualization, chat history, and admin analytics.
-
-## Portfolio Improvement Ideas
-
-- Add streaming AI responses
-- Add role-based permissions beyond admin/user
-- Add Alembic migrations
-- Add PostgreSQL for production
-- Add hybrid search with BM25 + vector search
-- Add evaluation dashboard for retrieval quality
-- Deploy frontend to Vercel and backend to Render/Fly.io
 
 
 ## Recent polish checks
