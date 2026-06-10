@@ -6,6 +6,7 @@ from langchain_core.documents import Document
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
+import uuid
 
 from app.core.config import get_settings
 
@@ -57,9 +58,12 @@ def get_vectorstore():
             raise ValueError("QDRANT_API_KEY is required when VECTOR_DB_PROVIDER=qdrant")
 
         client = QdrantClient(
-            url=settings.qdrant_url,
+            host=settings.qdrant_url,
+            port=443,
+            https=True,
             api_key=settings.qdrant_api_key,
-            timeout=60,
+            timeout=120,
+            prefer_grpc=False,
         )
 
         vector_size = len(embeddings.embed_query("test"))
@@ -89,7 +93,10 @@ def add_chunks(chunks: list[dict], filename: str, document_id: int, owner_id: in
 
     for i, chunk in enumerate(chunks):
         chunk_id = f"doc-{document_id}-chunk-{i}"
-        ids.append(chunk_id)
+        qdrant_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, chunk_id))
+
+        ids.append(qdrant_id)
+
         docs.append(
             Document(
                 page_content=chunk["text"],
@@ -109,12 +116,6 @@ def add_chunks(chunks: list[dict], filename: str, document_id: int, owner_id: in
             vectorstore.persist()
 
     return len(docs)
-
-
-def _matches_owner(item: dict[str, Any], owner_id: int | None) -> bool:
-    if owner_id is None:
-        return True
-    return item.get("metadata", {}).get("owner_id") == owner_id
 
 
 def similarity_search(question: str, top_k: int = 5, owner_id: int | None = None) -> list[dict[str, Any]]:
