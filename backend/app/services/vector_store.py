@@ -18,7 +18,10 @@ def get_embeddings():
     if settings.embedding_provider.lower() == "openai":
         if not settings.openai_api_key:
             raise ValueError("OPENAI_API_KEY is required when EMBEDDING_PROVIDER=openai")
-        return OpenAIEmbeddings(api_key=settings.openai_api_key)
+        return OpenAIEmbeddings(
+            model=settings.openai_embedding_model,
+            api_key=settings.openai_api_key,
+        )
     return HuggingFaceEmbeddings(model_name=settings.huggingface_embedding_model)
 
 

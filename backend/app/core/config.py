@@ -37,6 +37,7 @@ class Settings(BaseSettings):
     # Use huggingface by default so document indexing can work without OpenAI embeddings.
     embedding_provider: str = "huggingface"
     huggingface_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
+    openai_embedding_model: str = "text-embedding-3-small"
 
     # Vector database configuration.
     vector_db_provider: str = "qdrant"
